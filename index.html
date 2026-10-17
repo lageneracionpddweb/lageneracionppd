@@ -3,18 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mi página de prueba</title>
+  <title>LaGeneracionpdd</title>
+  <meta name="description" content="El versículo del día, los anuncios y la cuenta regresiva del campamento de LaGeneracionpdd.">
+  <meta name="theme-color" content="#2a3bff">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preload" href="fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-  <main>
-    <h1>Mi página de prueba</h1>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-    <p>Palabra del día:</p>
-    <h2 id="palabra">...</h2>
+  <header class="cabecera">
+    <a class="marca" href="index.html">LaGeneracionpdd</a>
+    <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="menu" class="menu" aria-label="Principal">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="campamento.html">Campamento</a>
+      <a href="juegos.html">Juegos</a>
+    </nav>
+  </header>
 
-    <p id="contador" hidden></p>
+  <main id="contenido">
+    <section class="portada" aria-labelledby="t-versiculo">
+      <div class="portada-int">
+        <h1 id="t-versiculo">Versículo del día</h1>
+        <figure class="versiculo" id="versiculo">
+          <blockquote>
+            <p class="versiculo-texto" id="versiculo-texto">Cargando…</p>
+          </blockquote>
+          <figcaption class="versiculo-cita" id="versiculo-cita"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <a class="faltan" id="faltan" href="campamento.html" hidden>
+      <span id="faltan-texto"></span>
+      <span class="faltan-link">Ver el campamento</span>
+    </a>
+
+    <section class="seccion" aria-labelledby="t-anuncios">
+      <h2 id="t-anuncios">Anuncios</h2>
+      <ul class="lista-anuncios" id="anuncios"></ul>
+      <p class="vacio" id="anuncios-vacio" hidden>No hay anuncios por ahora. Cuando haya novedades las vas a ver acá.</p>
+    </section>
   </main>
+
+  <footer class="pie">
+    <div class="pie-int">LaGeneracionpdd</div>
+  </footer>
 
   <script src="js/app.js"></script>
 </body>

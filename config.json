@@ -1,9 +1,26 @@
 {
-  "palabra": "Constancia",
-  "contador": {
-    "activo": false,
-    "titulo": "Faltan para Navidad",
-    "fecha": "2026-12-25"
+  "versiculo": {
+    "texto": "Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo en dondequiera que vayas.",
+    "cita": "Josué 1:9"
   },
-  "tema": "normal"
+  "campamento": {
+    "nombre": "Campamento",
+    "fecha": "2027-01-16T09:00:00-03:00",
+    "lugar": "",
+    "detalle": ""
+  },
+  "anuncios": [
+    {
+      "fecha": "2026-10-24",
+      "hora": "19:00",
+      "titulo": "Reunión de jóvenes",
+      "detalle": "Acá va el lugar y los detalles del evento."
+    },
+    {
+      "fecha": "2026-11-07",
+      "titulo": "Próximo evento",
+      "detalle": "Editá este anuncio en config.json."
+    }
+  ],
+  "juegos": []
 }

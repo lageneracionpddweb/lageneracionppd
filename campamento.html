@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campamento | LaGeneracionpdd</title>
+  <meta name="description" content="Cuántos días, horas, minutos y segundos faltan para el campamento de LaGeneracionpdd.">
+  <meta name="theme-color" content="#2a3bff">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preload" href="fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="index.html">LaGeneracionpdd</a>
+    <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="menu" class="menu" aria-label="Principal">
+      <a href="index.html">Home</a>
+      <a href="campamento.html" aria-current="page">Campamento</a>
+      <a href="juegos.html">Juegos</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <div class="titulo-pagina">
+      <h1 id="camp-nombre">Campamento</h1>
+      <p class="fecha-larga" id="camp-fecha" hidden></p>
+      <p class="detalle" id="camp-lugar" hidden></p>
+      <p class="detalle" id="camp-detalle" hidden></p>
+    </div>
+
+    <section class="cuenta" aria-labelledby="t-cuenta">
+      <div class="cuenta-int">
+        <h2 class="solo-lectores" id="t-cuenta">Cuenta regresiva</h2>
+
+        <ul class="cuenta-grilla" id="cuenta-grilla" role="timer" aria-label="Tiempo que falta para el campamento" hidden>
+          <li class="celda"><span class="celda-num" id="c-dias">00</span><span class="celda-uni">días</span></li>
+          <li class="celda"><span class="celda-num" id="c-horas">00</span><span class="celda-uni">horas</span></li>
+          <li class="celda"><span class="celda-num" id="c-minutos">00</span><span class="celda-uni">minutos</span></li>
+          <li class="celda"><span class="celda-num" id="c-segundos">00</span><span class="celda-uni">segundos</span></li>
+        </ul>
+
+        <div id="cuenta-aviso" role="status">
+          <p class="cuenta-mensaje" id="cuenta-mensaje">Cargando…</p>
+          <p class="cuenta-nota" id="cuenta-nota" hidden></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-int">LaGeneracionpdd</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
