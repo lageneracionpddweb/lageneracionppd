@@ -22,5 +22,11 @@
       "detalle": "Editá este anuncio en config.json."
     }
   ],
-  "juegos": []
-}
+  "juegos": [
+  {
+    "titulo": "Cuida tu vínculo con Dios",
+    "descripcion": "Derriba las cosas que quitan tu mirada de Él. Un camino de 12 niveles.",
+    "url": "https://velvety-gumdrop-2b04ee.netlify.app/",
+    "controles": "Con teclado: flechas o A y D para moverte, y la barra espaciadora para lanzar la Bomba de Gracia. En el celular, tocá la paloma."
+  }
+]
