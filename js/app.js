@@ -256,6 +256,101 @@
   }
 
   // ---------- Juegos ----------
+  // Solo se incrustan direcciones https (nunca javascript: ni http:)
+  function urlSegura(u) {
+    if (!u) return null;
+    try {
+      var x = new URL(u, window.location.href);
+      return x.protocol === "https:" ? x.href : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Enlaces de las tarjetas: solo https o páginas del propio sitio (nunca "javascript:")
+  function enlaceSeguro(u) {
+    if (!u) return null;
+    try {
+      var x = new URL(u, window.location.href);
+      return x.protocol === "https:" || x.origin === window.location.origin ? x.href : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Juego que se juega dentro de la página: carga el iframe recién al tocar "Jugar"
+  function crearJugable(li, j, url) {
+    var h = document.createElement("h2");
+    h.className = "juego-titulo";
+    h.textContent = j.titulo;
+    li.appendChild(h);
+
+    if (j.descripcion) {
+      var d = document.createElement("p");
+      d.className = "juego-descripcion";
+      d.textContent = j.descripcion;
+      li.appendChild(d);
+    }
+
+    var marco = document.createElement("div");
+    marco.className = "marco";
+    var jugar = document.createElement("button");
+    jugar.type = "button";
+    jugar.className = "jugar";
+    jugar.textContent = "Jugar";
+    marco.appendChild(jugar);
+    li.appendChild(marco);
+
+    var barra = document.createElement("div");
+    barra.className = "barra";
+    barra.hidden = true;
+
+    if (document.fullscreenEnabled) {
+      var pantalla = document.createElement("button");
+      pantalla.type = "button";
+      pantalla.className = "barra-accion";
+      pantalla.textContent = "Pantalla completa";
+      pantalla.addEventListener("click", function () {
+        var r = document.fullscreenElement ? document.exitFullscreen() : marco.requestFullscreen();
+        if (r && r.catch) r.catch(function () {});
+      });
+      barra.appendChild(pantalla);
+    }
+
+    var abrir = document.createElement("a");
+    abrir.className = "barra-accion";
+    abrir.href = url;
+    abrir.target = "_blank";
+    abrir.rel = "noopener noreferrer";
+    abrir.textContent = "Abrir en otra pestaña";
+    barra.appendChild(abrir);
+    li.appendChild(barra);
+
+    if (j.controles) {
+      var c = document.createElement("p");
+      c.className = "juego-controles";
+      c.textContent = j.controles;
+      li.appendChild(c);
+    }
+
+    jugar.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.src = url;
+      f.title = "Juego: " + j.titulo;
+      f.setAttribute("allow", "fullscreen; gamepad; autoplay");
+      f.setAttribute("allowfullscreen", "");
+      f.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-popups allow-modals");
+      // El foco queda en el juego, así las flechas y la barra espaciadora funcionan enseguida
+      f.addEventListener("load", function () {
+        f.focus();
+      });
+      marco.textContent = "";
+      marco.appendChild(f);
+      barra.hidden = false;
+      f.focus();
+    });
+  }
+
   function mostrarJuegos(lista) {
     var ul = porId("juegos");
     var vacio = porId("juegos-vacio");
@@ -273,18 +368,26 @@
 
     items.forEach(function (j) {
       var li = document.createElement("li");
-      li.className = "juego";
-      var a = document.createElement(j.enlace ? "a" : "div");
-      if (j.enlace) a.setAttribute("href", j.enlace);
-      var h = document.createElement("h3");
-      h.textContent = j.titulo;
-      a.appendChild(h);
-      if (j.descripcion) {
-        var p = document.createElement("p");
-        p.textContent = j.descripcion;
-        a.appendChild(p);
+      var url = urlSegura(j.url);
+
+      if (url) {
+        li.className = "juego juego-jugable";
+        crearJugable(li, j, url);
+      } else {
+        li.className = "juego";
+        var destino = enlaceSeguro(j.enlace);
+        var a = document.createElement(destino ? "a" : "div");
+        if (destino) a.setAttribute("href", destino);
+        var h = document.createElement("h3");
+        h.textContent = j.titulo;
+        a.appendChild(h);
+        if (j.descripcion) {
+          var p = document.createElement("p");
+          p.textContent = j.descripcion;
+          a.appendChild(p);
+        }
+        li.appendChild(a);
       }
-      li.appendChild(a);
       ul.appendChild(li);
     });
   }

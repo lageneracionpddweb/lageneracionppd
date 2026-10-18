@@ -510,7 +510,8 @@ a {
   padding: 0;
   list-style: none;
 }
-.juego > * {
+/* Juegos que son solo un enlace o un bloque de texto */
+.juego:not(.juego-jugable) > * {
   display: block;
   height: 100%;
   padding: 1.5rem;
@@ -518,15 +519,93 @@ a {
   color: #fff;
   text-decoration: none;
 }
-.juego > a:hover {
+.juego:not(.juego-jugable) > a:hover {
   background: #1d2bd6;
 }
-.juego h3 {
+.juego:not(.juego-jugable) h3 {
   font-weight: 700;
   font-size: 1.3rem;
 }
-.juego p {
+.juego:not(.juego-jugable) p {
   margin-top: 0.5rem;
+}
+
+/* Juegos que se juegan acá mismo, dentro de la página */
+.juego-jugable {
+  grid-column: 1 / -1;
+}
+.juego-titulo {
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+  letter-spacing: -0.01em;
+}
+.juego-descripcion {
+  max-width: 38rem;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.marco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: min(80vh, 46rem);
+  height: min(80svh, 46rem);
+  min-height: 26rem;
+  background: var(--cobalto);
+}
+.marco iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+.marco:fullscreen {
+  height: 100%;
+  min-height: 0;
+}
+
+.jugar {
+  padding: 1rem 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sol);
+  color: var(--tinta);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+.jugar:hover {
+  background: #f5c800;
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin-top: 1rem;
+}
+.barra-accion {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--tinta);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  cursor: pointer;
+}
+.barra-accion:hover {
+  color: var(--cobalto);
+}
+
+.juego-controles {
+  max-width: 38rem;
+  margin-top: 1rem;
 }
 
 .juegos-vacio {
