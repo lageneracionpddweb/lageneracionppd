@@ -1,7 +1,7 @@
 {
   "versiculo": {
-    "texto": "Desde Sion te bendiga Jehová, El cual ha hecho los cielos y la tierra.",
-    "cita": "Salmos 134:3"
+    "texto": "Y el rey juró diciendo: Vive Jehová, que ha redimido mi alma de toda angustia,",
+    "cita": "1 Reyes 1:29"
   },
   "campamento": {
     "nombre": "Campamento",
@@ -23,11 +23,11 @@
     }
   ],
   "juegos": [
-  {
-    "titulo": "Cuida tu vínculo con Dios",
-    "descripcion": "Derriba las cosas que quitan tu mirada de Él. Un camino de 12 niveles.",
-    "url": "https://velvety-gumdrop-2b04ee.netlify.app/",
-    "controles": "Con teclado: flechas o A y D para moverte, y la barra espaciadora para lanzar la Bomba de Gracia. En el celular, tocá la paloma."
-  }
-]
+    {
+      "titulo": "Cuida tu vínculo con Dios",
+      "descripcion": "Derriba las cosas que quitan tu mirada de Él. Un camino de 12 niveles.",
+      "url": "https://velvety-gumdrop-2b04ee.netlify.app/",
+      "controles": "Con teclado: flechas o A y D para moverte, y la barra espaciadora para lanzar la Bomba de Gracia. En el celular, tocá la paloma."
+    }
+  ]
 }
